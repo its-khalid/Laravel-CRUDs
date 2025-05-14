@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\File;
 class ProductController extends Controller
 {
     public function index(Request $request) {
-        $search = $request->input('query');
         $query = Product::where('user_id', Auth::id());
+        $search = $request->input('query');
         if ($search) {
             $query->where('title', 'like', "%{$search}%");
         }
